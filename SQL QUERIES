@@ -1,0 +1,25 @@
+-- Create Users Table for Authentication
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Create Meals Table for tracking meals
+CREATE TABLE meals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    meal_name VARCHAR(255),
+    category VARCHAR(255),
+    calories INT,
+    time TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Create Calorie Goals Table
+CREATE TABLE calorie_goals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    goal INT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
